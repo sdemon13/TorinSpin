@@ -14,9 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const data = await response.json();
-            if (data.error) throw new Error(data.error.message);
+            if (data.error) throw new Error(data.error);
             return data;
         } catch (error) {
+            console.error(`Ошибка API: ${error.message}`);
             alert(`Ошибка: ${error.message}`);
             return null;
         }
@@ -24,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function updateBalance(email) {
         const data = await fetchAPI('/getBalance', 'POST', { email });
-        if (data) balanceSpan.innerText = data.balance.toFixed(2);
+        if (data && data.balance !== undefined) {
+            balanceSpan.innerText = data.balance.toFixed(2);
+        }
     }
 
     // 🔹 Регистрация
@@ -40,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await fetchAPI('/register', 'POST', { email, password });
             if (data) {
-                alert("Регистрация успешна! Теперь войдите в аккаунт.");
+                alert("✅ Регистрация успешна! Теперь войдите в аккаунт.");
             }
         });
     }
@@ -59,13 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await fetchAPI('/login', 'POST', { email, password });
             if (data) {
                 localStorage.setItem('userEmail', email);
-                alert("Вход выполнен!");
+                alert("✅ Вход выполнен!");
                 updateBalance(email);
             }
         });
     }
 
-    // 🔹 Пополнение
+    // 🔹 Пополнение баланса
     if (depositBtn) {
         depositBtn.addEventListener('click', async () => {
             const email = localStorage.getItem('userEmail');
@@ -76,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const amount = parseFloat(prompt("Введите сумму пополнения ($1 - $100):"));
             if (isNaN(amount) || amount < 1 || amount > 100) {
-                alert("Введите сумму от $1 до $100.");
+                alert("Ошибка! Введите сумму от $1 до $100.");
                 return;
             }
 
@@ -88,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 🔹 Вывод
+    // 🔹 Вывод средств
     if (withdrawBtn) {
         withdrawBtn.addEventListener('click', async () => {
             const email = localStorage.getItem('userEmail');
@@ -99,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const amount = parseFloat(prompt("Введите сумму для вывода:"));
             if (isNaN(amount) || amount <= 0) {
-                alert("Введите корректную сумму.");
+                alert("Ошибка! Введите корректную сумму.");
                 return;
             }
 
