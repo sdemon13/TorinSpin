@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorinSpin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 🔹 Хедер (верхняя панель) -->
+    <header>
+        <div class="logo">TorinSpin</div>
+        <nav>
+            <ul>
+                <li><a href="#">Игры</a></li>
+                <li><a href="#">Бонусы</a></li>
+                <li><a href="#">Пополнение</a></li>
+                <li><a href="#">Вывод</a></li>
+                <li><a href="#">Профиль</a></li>
+            </ul>
+        </nav>
+        <button class="auth-btn">Войти</button>
+    </header>
+
+    <!-- 🔹 Основное содержимое -->
+    <div class="container">
+        <h1>TorinSpin</h1>
+        <input type="email" id="email" placeholder="Введите email">
+        <input type="password" id="password" placeholder="Введите пароль">
+        <button id="register">Регистрация</button>
+        <button id="login">Вход</button>
+        <h2>Баланс: <span id="balance">0</span> ₽</h2>
+        <button id="deposit">Пополнить</button>
+        <button id="withdraw">Вывести</button>
+    </div>
+
+    <!-- 🔹 Раздел с играми -->
+    <section class="games">
+        <div class="game-card crash">
+            <h3>Crash</h3>
+            <p>Динамическая игра с множителями</p>
+            <button>Играть</button>
+        </div>
+        <div class="game-card double">
+            <h3>Double</h3>
+            <p>Рулетка на множители</p>
+            <button>Играть</button>
+        </div>
+        <div class="game-card jackrun">
+            <h3>Jackrun</h3>
+            <p>Шанс сорвать крупный куш</p>
+            <button>Играть</button>
+        </div>
+    </section>
+
+    <!-- 🔹 Футер -->
+    <footer>
+        <p>© 2025 TorinSpin. Все права защищены.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

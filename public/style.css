@@ -1,0 +1,200 @@
+/* 🔹 Глобальные стили */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0b0e14;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🔹 Контейнер */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 🔹 Заголовок */
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* 🔹 Поля ввода */
+input {
+    width: 80%;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 16px;
+}
+
+/* 🔹 Кнопки */
+button {
+    width: 85%;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔹 Стиль для кнопок (градиенты) */
+button#register {
+    background: linear-gradient(45deg, #ff6600, #ff3300);
+    color: white;
+    font-weight: 600;
+}
+
+button#login {
+    background: linear-gradient(45deg, #0099ff, #0055ff);
+    color: white;
+    font-weight: 600;
+}
+
+button#deposit {
+    background: linear-gradient(45deg, #00ff99, #00cc66);
+    color: white;
+    font-weight: 600;
+}
+
+button#withdraw {
+    background: linear-gradient(45deg, #ff0055, #cc0033);
+    color: white;
+    font-weight: 600;
+}
+
+/* 🔹 Hover-эффекты */
+button:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* 🔹 Карточка баланса */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* 🔹 Баланс */
+#balance {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00ff99;
+    text-shadow: 0px 0px 10px rgba(0, 255, 153, 0.5);
+}
+/* 🔹 Хедер */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* 🔹 Логотип */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6600;
+    text-shadow: 0px 0px 10px rgba(255, 102, 0, 0.8);
+}
+
+/* 🔹 Навигация */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff6600;
+}
+
+/* 🔹 Кнопка авторизации */
+.auth-btn {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #0099ff, #0055ff);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-btn:hover {
+    opacity: 0.8;
+}
+/* 🔹 Карточки игр */
+.games {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.game-card {
+    width: 250px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.game-card h3 {
+    font-size: 22px;
+    color: white;
+}
+
+.game-card p {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.game-card button {
+    padding: 10px;
+    background: linear-gradient(45deg, #ff6600, #ff3300);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+/* 🔹 Футер */
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}

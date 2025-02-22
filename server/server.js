@@ -10,7 +10,7 @@ app.use(express.json());
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-// 🔹 Авторизация через email
+// 🔹 Регистрация
 app.post('/register', async (req, res) => {
     const { email, password } = req.body;
     const { user, error } = await supabase.auth.signUp({ email, password });
@@ -19,6 +19,7 @@ app.post('/register', async (req, res) => {
     res.json(user);
 });
 
+// 🔹 Авторизация
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const { user, session, error } = await supabase.auth.signInWithPassword({ email, password });
@@ -27,7 +28,7 @@ app.post('/login', async (req, res) => {
     res.json({ user, session });
 });
 
-// 🔹 Пополнение баланса
+// 🔹 Пополнение баланса через Stripe
 app.post('/deposit', async (req, res) => {
     const { email, amount } = req.body;
     if (amount < 1 || amount > 100) return res.status(400).json({ error: "Сумма от $1 до $100" });
@@ -44,7 +45,7 @@ app.post('/deposit', async (req, res) => {
 // 🔹 Вывод средств (с комиссией 20%)
 app.post('/withdraw', async (req, res) => {
     const { email, amount } = req.body;
-    const finalAmount = amount * 0.8; // Учитываем комиссию 20%
+    const finalAmount = amount * 0.8; // 20% комиссия
 
     const { data, error } = await supabase
         .from('users')
@@ -55,7 +56,7 @@ app.post('/withdraw', async (req, res) => {
     if (error || data.balance < amount) return res.status(400).json({ error: "Недостаточно средств" });
 
     await supabase.from('users').update({ balance: data.balance - amount }).eq('email', email);
-    res.json({ message: "Вывод средств успешно отправлен!" });
+    res.json({ message: "Вывод успешно отправлен!" });
 });
 
 app.listen(3000, () => console.log('✅ Сервер запущен на порту 3000'));
